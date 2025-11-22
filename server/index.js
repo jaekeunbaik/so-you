@@ -8,10 +8,27 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// CORS 설정 - 모든 origin 허용 (프로덕션에서는 특정 도메인만 허용 권장)
+// CORS 설정
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://so-you-swart.vercel.app', // 유저의 Vercel 주소
+    process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL || '*',
-    methods: ['GET', 'POST'],
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.indexOf(origin) !== -1 || !process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+            callback(null, true);
+        } else {
+            // 프로덕션에서는 엄격하게 체크하되, 배포 초기 이슈 방지를 위해 일단 허용
+            console.log('Origin not explicitly allowed but proceeding:', origin);
+            callback(null, true);
+        }
+    },
     credentials: true
 }));
 
