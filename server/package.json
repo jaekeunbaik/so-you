@@ -1,0 +1,24 @@
+{
+  "name": "so-you-server",
+  "version": "1.0.0",
+  "description": "Backend API for so-you emotional text transformation service",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [
+    "emotional",
+    "text",
+    "transformation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}

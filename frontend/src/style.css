@@ -1,0 +1,156 @@
+/* 전역 스타일 - 감성적이고 부드러운 디자인 */
+
+:root {
+  /* 파스텔 컬러 팔레트 */
+  --color-bg: #faf8f5;
+  --color-bg-soft: #f5f2ed;
+  --color-primary: #d4b5d4;
+  --color-primary-soft: #e8d9e8;
+  --color-secondary: #b8c9d9;
+  --color-accent: #f4c2c2;
+  --color-text: #5a5a5a;
+  --color-text-soft: #8a8a8a;
+  --color-white: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.08);
+
+  /* 타이포그래피 */
+  --font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+
+  /* 간격 */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+
+  /* 보더 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* 트랜지션 */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-text);
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-soft) 100%);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 부드러운 스크롤 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 선택 영역 스타일 */
+::selection {
+  background-color: var(--color-primary-soft);
+  color: var(--color-text);
+}
+
+/* 포커스 스타일 */
+*:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 버튼 기본 스타일 리셋 */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+/* 입력 필드 기본 스타일 */
+input,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+}
+
+/* 유틸리티 클래스 */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--transition-base);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  :root {
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.75rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-md: 1.25rem;
+  }
+
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  /* 모바일에서 입력창 높이 조정 */
+  textarea {
+    min-height: 120px;
+    font-size: 16px;
+    /* iOS 자동 확대 방지 */
+  }
+
+  /* 버튼 터치 영역 확대 */
+  button {
+    min-height: 48px;
+    /* 모바일 접근성 권장 크기 */
+  }
+}
